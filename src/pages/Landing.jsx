@@ -1,38 +1,102 @@
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
 function Landing() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <div className="landing">
-
       {/* Navbar */}
       <nav className="landing-nav">
         <h1 className="landing-logo">myINVOICE</h1>
-        <div className="landing-nav-links">
+
+        {/* Desktop links */}
+        <div className="landing-nav-links desktop-nav">
           <a href="#features">Features</a>
           <a href="#how-it-works">How it Works</a>
           <a href="#pricing">Pricing</a>
-          <button className="btn-outline" onClick={() => navigate('/login')}>Login</button>
-          <button className="btn-cta" onClick={() => navigate('/register')}>Get Started Free</button>
+          <button className="btn-outline" onClick={() => navigate("/login")}>
+            Login
+          </button>
+          <button className="btn-cta" onClick={() => navigate("/register")}>
+            Get Started Free
+          </button>
         </div>
+
+        {/* Mobile hamburger */}
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? "✕" : "☰"}
+        </button>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="mobile-menu">
+            <a href="#features" onClick={() => setMenuOpen(false)}>
+              Features
+            </a>
+            <a href="#how-it-works" onClick={() => setMenuOpen(false)}>
+              How it Works
+            </a>
+            <a href="#pricing" onClick={() => setMenuOpen(false)}>
+              Pricing
+            </a>
+            <button
+              className="btn-outline full-width"
+              onClick={() => {
+                navigate("/login");
+                setMenuOpen(false);
+              }}
+            >
+              Login
+            </button>
+            <button
+              className="btn-cta full-width"
+              onClick={() => {
+                navigate("/register");
+                setMenuOpen(false);
+              }}
+            >
+              Get Started Free
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Hero */}
       <section className="hero">
         <div className="hero-content">
-          <span className="hero-badge">✦ Your Business. Your Invoices. Your Way.</span>
-          <h1>Invoice Clients.<br />Get Paid Faster.</h1>
-          <p>myINVOICE helps freelancers and small businesses create professional invoices, track payments and send invoices directly to clients — all in one place.</p>
+          <span className="hero-badge">
+            ✦ Your Business. Your Invoices. Your Way.
+          </span>
+          <h1>
+            Invoice Clients.
+            <br />
+            Get Paid Faster.
+          </h1>
+          <p>
+            myINVOICE helps freelancers and small businesses create professional
+            invoices, track payments and send invoices directly to clients — all
+            in one place.
+          </p>
           <div className="hero-buttons">
-            <button className="btn-cta large" onClick={() => navigate('/register')}>
+            <button
+              className="btn-cta large"
+              onClick={() => navigate("/register")}
+            >
               Start for Free →
             </button>
-            <button className="btn-outline large" onClick={() => navigate('/login')}>
+            <button
+              className="btn-outline large"
+              onClick={() => navigate("/login")}
+            >
               Login to Dashboard
             </button>
           </div>
-          <p className="hero-note">✓ Free forever &nbsp;&nbsp; ✓ No credit card needed &nbsp;&nbsp; ✓ Setup in 2 minutes</p>
+          <p className="hero-note">
+            ✓ Free forever &nbsp;&nbsp; ✓ No credit card needed &nbsp;&nbsp; ✓
+            Setup in 2 minutes
+          </p>
         </div>
         <div className="hero-visual">
           <div className="hero-card">
@@ -67,18 +131,26 @@ function Landing() {
         <div className="section-header">
           <span className="section-badge">Features</span>
           <h2>Everything you need to get paid</h2>
-          <p>Built specifically for freelancers and small business owners who want to look professional and get paid on time.</p>
+          <p>
+            Built specifically for freelancers and small business owners who
+            want to look professional and get paid on time.
+          </p>
         </div>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">📄</div>
             <h3>Professional Invoices</h3>
-            <p>Create clean, branded invoices with your logo and business info in seconds.</p>
+            <p>
+              Create clean, branded invoices with your logo and business info in
+              seconds.
+            </p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📊</div>
             <h3>Payment Tracking</h3>
-            <p>Track paid, unpaid and overdue invoices from one clean dashboard.</p>
+            <p>
+              Track paid, unpaid and overdue invoices from one clean dashboard.
+            </p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📧</div>
@@ -88,17 +160,26 @@ function Landing() {
           <div className="feature-card">
             <div className="feature-icon">📥</div>
             <h3>PDF Download</h3>
-            <p>Download any invoice as a clean PDF to share or store for your records.</p>
+            <p>
+              Download any invoice as a clean PDF to share or store for your
+              records.
+            </p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🔔</div>
             <h3>Overdue Alerts</h3>
-            <p>Automatically detects overdue invoices so you never miss a follow-up.</p>
+            <p>
+              Automatically detects overdue invoices so you never miss a
+              follow-up.
+            </p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🌍</div>
             <h3>Multi-Currency</h3>
-            <p>Support for Naira, Dollar, Pound, Euro and more African currencies.</p>
+            <p>
+              Support for Naira, Dollar, Pound, Euro and more African
+              currencies.
+            </p>
           </div>
         </div>
       </section>
@@ -119,17 +200,23 @@ function Landing() {
           <div className="step-card">
             <div className="step-number">02</div>
             <h3>Set up your business</h3>
-            <p>Add your business name, logo and contact details to your profile.</p>
+            <p>
+              Add your business name, logo and contact details to your profile.
+            </p>
           </div>
           <div className="step-card">
             <div className="step-number">03</div>
             <h3>Create your first invoice</h3>
-            <p>Fill in your client details, add your services and set a due date.</p>
+            <p>
+              Fill in your client details, add your services and set a due date.
+            </p>
           </div>
           <div className="step-card">
             <div className="step-number">04</div>
             <h3>Send and get paid</h3>
-            <p>Send directly to your client's email or download as PDF and share.</p>
+            <p>
+              Send directly to your client's email or download as PDF and share.
+            </p>
           </div>
         </div>
       </section>
@@ -144,8 +231,12 @@ function Landing() {
         <div className="pricing-grid">
           <div className="pricing-card">
             <div className="pricing-plan">Free</div>
-            <div className="pricing-amount">$0<span>/month</span></div>
-            <p className="pricing-desc">Perfect for freelancers just getting started.</p>
+            <div className="pricing-amount">
+              $0<span>/month</span>
+            </div>
+            <p className="pricing-desc">
+              Perfect for freelancers just getting started.
+            </p>
             <ul className="pricing-features">
               <li>✓ Up to 5 invoices</li>
               <li>✓ PDF download</li>
@@ -155,7 +246,10 @@ function Landing() {
               <li className="disabled">✗ Business logo on invoices</li>
               <li className="disabled">✗ Priority support</li>
             </ul>
-            <button className="btn-cta full" onClick={() => navigate('/register')}>
+            <button
+              className="btn-cta full"
+              onClick={() => navigate("/register")}
+            >
               Get Started Free
             </button>
           </div>
@@ -163,8 +257,12 @@ function Landing() {
           <div className="pricing-card featured">
             <div className="pricing-badge">Most Popular</div>
             <div className="pricing-plan">Pro</div>
-            <div className="pricing-amount">$3<span>/month</span></div>
-            <p className="pricing-desc">For serious freelancers and growing businesses.</p>
+            <div className="pricing-amount">
+              $3<span>/month</span>
+            </div>
+            <p className="pricing-desc">
+              For serious freelancers and growing businesses.
+            </p>
             <ul className="pricing-features">
               <li>✓ Unlimited invoices</li>
               <li>✓ PDF download</li>
@@ -186,22 +284,26 @@ function Landing() {
         <div className="footer-content">
           <div>
             <h3>myINVOICE</h3>
-            <p>Your Business. Your Invoices. Your Way.</p>
+            <p>Your Business. Your Invoices. Your Way.a</p>
           </div>
           <div className="footer-links">
             <a href="#features">Features</a>
             <a href="#how-it-works">How it Works</a>
             <a href="#pricing">Pricing</a>
-            <span onClick={() => navigate('/login')} style={{cursor:'pointer'}}>Login</span>
+            <span
+              onClick={() => navigate("/login")}
+              style={{ cursor: "pointer" }}
+            >
+              Login
+            </span>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2026 myINVOICE. All rights reserved.</p>
         </div>
       </footer>
-
     </div>
-  )
+  );
 }
 
-export default Landing
+export default Landing;

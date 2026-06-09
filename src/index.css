@@ -1184,3 +1184,55 @@ body {
     display: none;
   }
 }
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #0f172a;
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  flex-direction: column;
+  gap: 16px;
+  z-index: 99;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #475569;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.full-width {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+}
